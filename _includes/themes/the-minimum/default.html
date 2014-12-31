@@ -7,9 +7,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>{{ page.title }}</title>
+	{% if site.author. %}
 	<meta name="author" content="{{ site.author.name }}">
+	{% endif %}
 	<link href='{{ ASSET_PATH }}/css/style.css' rel="stylesheet" media="all">
+	{% if site.author. %}
 	<link href="http://feeds.feedburner.com/{{ site.author.feedbaname }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
+	{% endif %}
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -47,10 +51,24 @@
 				<div class="misc vcard">
 					<h4>about</h4>
 					<ul>
+						{% if site.author.name and or site.author.email %}
 						<li class="contact"><address><span class="author fn n">{{ site.author.name }}</span> - <span class="fn email">{{ site.author.email }}</span></address></li>
+						{% endif %}
+						{% if site.author.github  %}
 						<li class="github"><a href="http://github.com/{{ site.author.github }}/" rel="me">github.com/{{ site.author.github }}</a></li>
+						{% endif %}
+						{% if site.author.facebook  %}
+						<li class="facebook"><a href="http://facebook.com/{{ site.author.facebook }}/" rel="me">facebook.com/{{ site.author.facebook }}</a></li>
+						{% endif %}
+						{% if site.author.linkedin  %}
+						<li class="linkedin"><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" rel="me">linkedin.com/{{ site.author.linkedin }}</a></li>
+						{% endif %}
+						{% if site.author.twitter  %}
 						<li class="twitter"><a href="http://twitter.com/{{ site.author.twitter }}/" rel="me">twitter.com/{{ site.author.twitter }}</a></li>
+						{% endif %}
+						{% if site.author.feedname  %}
 						<li class="rss"><a href="http://feeds.feedburner.com/{{ site.author.feedname }}">Subscribe to RSS Feed</a></li>
+						{% endif %}
 					</ul>
 				</div><!-- misc -->
 				<p class="licence">
